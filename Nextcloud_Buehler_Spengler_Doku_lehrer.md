@@ -152,6 +152,14 @@ Wenn man damit zufrieden ist, drückt man die Taste "Finish Setup" (2.), dabei m
 | Hochladen eines Files                                           | Das File wird auf Nextcloud hochgeladen und erscheint in der Cloud                 | Das File wird auf den Nextcloud Server geladen und wird in der Cloud gespeichert              |
 | Download eines Files                                            | Das File wird heruntergeladen und man kann es auf dem Computer nutzen              | Der Download des Files beginnt und man kann das File nach dem Download nutzen                 |
 
+Im Screenshot sind Testdateien zu sehen die wir in die Cloud geladen haben.
+
+![Daten Nextcloud](media/nextclouddata.png "Nextcloud Daten")
+
+Wir haben aktuell 2 Logins erstellt. Der Kunde wird sich dann selber seine Logins erstellen können.
+
+![Logins Nextcloud](media/nextcloudlogins.png "Nextcloud Logins")
+
 ## Übergabe an den Betrieb
 DIe Übergabe wurde in einem Separatem Dokument gehandhabt. 
 
