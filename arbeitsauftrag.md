@@ -45,7 +45,7 @@ Zeitaufwand
 ### Hardware
 -   Computer (Raspberry Pi 3) (auch andere Versionen möglich)
 -   Micro USB Netzteil
--   Micro SD Karte mit mindestens 16 GB
+-   Micro SD Karte mit mindestens 4 GB
 -   Netzwerk- und Internetverbindung
 
 ### Software
@@ -72,20 +72,19 @@ libapache2-mod-php7.3
 ```
 
 ## 04-Installationsanleitung
-Für dieses Projekt soll Nextcloud als Cloudlösung aufgesetzt werden. Dieses soll direkt auf das Betriebssystem Raspbian Buster auf dem Raspberry Pi installiert werden.
+Für dieses Projekt soll Nextcloud als Cloudlösung aufgesetzt werden. Dieses soll direkt auf das Betriebssystem Raspbian Stretch auf dem Raspberry Pi installiert werden.
 ```
-- Den Raspberry Pi mit Raspbian Buster als Betriebssystem        aufsetzen
+- Den Raspberry Pi mit Raspbian Buster als Betriebssystem aufsetzen
 - Prerequisits von Nextcloud installieren
 - Nextcloud installieren
 - Web Gui konfigurieren
 ```
 
-## 05-Qualitätskontrolle
 
+## 05-Qualitätskontrolle
 Mit einem Browser auf das Web Gui der Cloud zugreiffen.
 Über das Web Gui ist es nun möglich, Dateien in die Cloud zu laden. DIe Hochgealdenen Dateien können nun auch wieder heruntergeladen werden.
 
 ## 06-Error-Handling
-
 Im Internet finden sich viele verschiedene Anleitungen um Nextcloud zu installieren. Zudem findet man im Internet viele Foren in dene Probleme angesprochen werden.
 Das Error-Log von Nextcloud kann über den command ``nextcloud.occ`` nachgeschaut werden

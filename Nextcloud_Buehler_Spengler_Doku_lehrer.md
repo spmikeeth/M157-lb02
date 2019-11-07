@@ -143,11 +143,14 @@ Wenn man damit zufrieden ist, drückt man die Taste "Finish Setup" (2.), dabei m
 
 | Testfall                                                        | Soll                                                                               | Ist                                                                                           |
 |-----------------------------------------------------------------|------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
-| Im Browser die IP Adresse des Raspbian eingeben                 | Das Login Fenster von Nextcloud erscheint und man kann sich in der Cloud einloggen | Im Browser erscheint das Loginfenster von Nextcloud und ermöglicht das einloggen in die Cloud |
-| Im loginfenster von Nextcloud die falschen Logindaten eingeben  | Nextcloud gibt eine Meldung, dass die Logindaten falsch sind                       | Nextcloud verweigert das Login und meldet, dass das Login falsch ist                          |
+| Im Browser wird die IP des Raspberry Pi eingegeben                | Das Login Fenster von Nextcloud erscheint und man kann sich in der Cloud einloggen | Im Browser erscheint das Loginfenster von Nextcloud und ermöglicht das Einloggen in die Cloud |
+| Im Loginfenster von Nextcloud die falschen Logindaten eingeben  | Nextcloud gibt eine Meldung, dass die Logindaten falsch sind                       | Nextcloud verweigert das Login und meldet, dass das Login falsch ist                          |
 | Im Loginfenster von Nextcloud die richtigen Logindaten eingeben | Das Login ist erfolgreich und man erhält Zugriff auf die Cloud                     | Das Login ist erfolgreich und man erhält Zugriff auf seine Cloud                              |
 | Hochladen eines Files                                           | Das File wird auf Nextcloud hochgeladen und erscheint in der Cloud                 | Das File wird auf den Nextcloud Server geladen und wird in der Cloud gespeichert              |
 | Download eines Files                                            | Das File wird heruntergeladen und man kann es auf dem Computer nutzen              | Der Download des Files beginnt und man kann das File nach dem Download nutzen                 |
+| Synchronisierung durch Sync Client | Die Dateien werden korrekt und automatisch synchronisiert | Die Synchronisierung funktioniert. Jedoch dauert es relativ lang, bis der Synchronisierungsvorgang angestossen wird. 
+| Fehlermeldungen in Logs | Die Logs melden keine Fehlermeldungen | Es gibt nur eine einzige Warnung, die aber nicht in den Logs erscheint und nur bei der initialen Konfiguration. Diese Warnung ist, dass sqlite als Datenbank verwendet wird und nicht eine stabilere, zuverlässigere Datenbank.
+
 
 Im Screenshot sind Testdateien zu sehen die wir in die Cloud geladen haben.
 
@@ -165,3 +168,4 @@ DIe Übergabe wurde in einem Separatem Dokument gehandhabt.
 - https://raspberrytips.com/install-nextcloud-raspberry-pi/
 - https://getgrav.org/blog/raspberrypi-nginx-php7-dev
 - https://linuxhint.com/install_nextcloud_raspberry_pi/
+- 
