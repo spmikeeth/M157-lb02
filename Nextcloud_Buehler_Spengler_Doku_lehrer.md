@@ -18,29 +18,26 @@
 - Mike Spengler
 
 ### Versionierung
-Wir nutzen Github und haben alle Dokumentationen in einem Repository. Dadurch ist die Versionierung duch Github gehandhabt.
+Wir nutzen Github und haben alle Dokumentationen in einem Repository. Dadurch ist die Versionierung duch Git bereits vorgegeben.
 
 ### Auftrag
-Unser Auftraggeber wünscht sich eine eigene Cloud welche vor ort gehosted wird und via Webbrowser verfügbar ist. 
-  
+Unser Auftraggeber wünscht sich eine eigene Cloud welcher vor Ort gehosted wird und via Webbrowser verfügbar ist. Diese Cloud wird gewünscht, da der Kunde sensible Daten hat und nicht will, dass diese Daten auf Servern anderer Unternehmen ist. 
 
 ## Funktionen von Nextcloud
-Nextcloud ist eine Cloud lösung mit der man auf einem Computer oder Server selber eine Cloud einrichten kann. 
-Nextcloud nutzt dann die Ressourcen des Servers/Computers um die Daten zu speichern. 
-Nextcloud ermöglicht es, eine eigene Cloud zu haben. Dadurch kann man die Datenintegrität besser gewährleisten.
+Nextcloud ist eine Cloudlösung. Diese Cloudlösung kann man einfach auf einem eigenen Computer installieren. Auf dem Computer sollte vorzugsweise eine Linux-Distribution installiert sein. Weil alles lokal auf einem eigenen Server installiert, kann man die Datenintegrität besser gewährleisten.
 
-## Hard- und Software anforderungen von Nextcloud
+## Hard- und Softwareanforderungen von Nextcloud
 ### Hardware
--   Raspberry Pi 3 (auch andere Versionen möglich)
--   Micro USB Netzteil
--   Micro SD Karte mit mindestens 16 GB
+-   Computer (in unserem Fall Raspberry Pi 3)
+-   Netzteil (Micro USB)
 -   Netzwerk- und Internetverbindung
 
-### Software
-Wir haben ein Raspbian Stretch auf dem Raspberry Pi installiert. Darauf haben wir php7.3 und apache2 installiert.
-Zudem wurde Nextcloud selber installiert. 
+Ein Raspberry Pi braucht dazu eine Micro SD Karte mit mindestens 4 GB.
 
-Nextcloud benötigt php und apache bzw einen Webserver um zu funktionieren.
+### Software
+Wir haben ein Raspbian Stretch auf dem Raspberry Pi installiert. Darauf haben wir php7.3 und apache2 installiert. Zudem wurde Nextcloud selber installiert. Die Installation via Snap oder Docker funktioniert nicht oder nur teilweise, da die Architektur dies nicht ermöglicht.
+
+Nextcloud benötigt php und einen anderen Webserver um zu funktionieren.
 
 Softwareanforderungen: 
 php7.1
@@ -85,7 +82,7 @@ Zuerst erstellt man eine neue Source List:
 sudo nano /etc/apt/sources.list.d/10-stretch.list.
 ```
 
-In dieser Datei füght man nun folgendes hinzu:
+In dieser Datei fügt man nun folgendes hinzu:
 ```
 deb http://mirrordirector.raspbian.org/raspbian/ stretch main contrib non-free rpi
 ```
@@ -104,7 +101,7 @@ sudo service apache2 restart
 ```
 
 
-### Nextcloud installation
+### Installation
 
 
 Die Installation von Nextcloud auf dem Raspberry Pi ist ganz einfach, es geht hauptsächlich darum, das Skript von der Website herunterzuladen, das zip zu extrahieren und dann die IP-Adresse im Browser einzugeben.
