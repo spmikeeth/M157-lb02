@@ -149,7 +149,10 @@ Wenn man damit zufrieden ist, drückt man die Taste "Finish Setup" (2.), dabei m
 | Hochladen eines Files                                           | Das File wird auf Nextcloud hochgeladen und erscheint in der Cloud                 | Das File wird auf den Nextcloud Server geladen und wird in der Cloud gespeichert              |
 | Download eines Files                                            | Das File wird heruntergeladen und man kann es auf dem Computer nutzen              | Der Download des Files beginnt und man kann das File nach dem Download nutzen                 |
 | Synchronisierung durch Sync Client | Die Dateien werden korrekt und automatisch synchronisiert | Die Synchronisierung funktioniert. Jedoch dauert es relativ lang, bis der Synchronisierungsvorgang angestossen wird. 
-| Fehlermeldungen in Logs | Die Logs melden keine Fehlermeldungen | Es gibt nur eine einzige Warnung, die aber nicht in den Logs erscheint und nur bei der initialen Konfiguration. Diese Warnung ist, dass sqlite als Datenbank verwendet wird und nicht eine stabilere, zuverlässigere Datenbank.
+| Fehlermeldungen in Logs | Die Logs melden keine Fehlermeldungen | Es gibt nur eine einzige Warnung, die aber nicht in den Logs erscheint und nur bei der initialen Konfiguration. Diese Warnung ist, dass sqlite als Datenbank verwendet wird und nicht eine stabilere, zuverlässigere Datenbank. 
+| User erstellen | Der User wird erstellt und man kann die maximale Datenmenge angeben, die dieser User zur verfügung hat. | Man kann den User erstellen und angeben, wieviel Speicherplatz dieser User zur verfügung haben soll.
+| Installieren von zusätzlichen apps | Zusätzliche Apps können installiert werden und diese Funktionieren auch | Das Installieren von zusätzlichen Apps funktioniert und die installierten Apps funktionieren auch.
+| Themes | Themeing app ist installiert und themes können erstellt sowie angepasst und applied werden. | Über die Themeingapp können können themes erstellt werden. Diese themes können dann auc beabeitet und applied werden. 
 
 
 Im Screenshot sind Testdateien zu sehen die wir in die Cloud geladen haben.
