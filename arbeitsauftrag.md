@@ -78,13 +78,15 @@ Für dieses Projekt soll Nextcloud als Cloudlösung aufgesetzt werden. Dieses so
 - Prerequisits von Nextcloud installieren
 - Nextcloud installieren
 - Web Gui konfigurieren
+- Fortgeschritten: automatisches Backup durch Cronjobs (z.B. über Telegram)
 ```
 
-
 ## 05-Qualitätskontrolle
-Mit einem Browser auf das Web Gui der Cloud zugreiffen.
-Über das Web Gui ist es nun möglich, Dateien in die Cloud zu laden. DIe Hochgealdenen Dateien können nun auch wieder heruntergeladen werden.
+Mit einem Browser auf das Web Gui der Cloud zugreifen.
+Über das Web Gui ist es nun möglich, Dateien in die Cloud zu laden. Die Hochgealdenen Dateien können nun auch wieder heruntergeladen werden. Ausserdem soll der Sync Client funktionieren (Download, Upload, automatisches synchronisieren). 
 
+Die Installation zusätzlicher Apps soll funktionieren und das Aussehen von Nextcloud soll über das Theming App anpassbar sein. 
 ## 06-Error-Handling
-Im Internet finden sich viele verschiedene Anleitungen um Nextcloud zu installieren. Zudem findet man im Internet viele Foren in dene Probleme angesprochen werden.
-Das Error-Log von Nextcloud kann über den command ``nextcloud.occ`` nachgeschaut werden
+Im Internet finden sich viele verschiedene Anleitungen um Nextcloud zu installieren. Zudem findet man im Internet viele Foren in denen Probleme und deren Lösungen diskutiert werden.
+
+Das Error-Log von Nextcloud kann über den Command ``occ logs:watch`` überprüft werden. Die Datei occ befindet sich im über den Webserver freigegeben Ordner für Nextcloud.

@@ -101,8 +101,7 @@ sudo service apache2 restart
 ```
 
 
-### Installation
-
+### Installation von Nextcloud
 
 Die Installation von Nextcloud auf dem Raspberry Pi ist ganz einfach, es geht hauptsächlich darum, das Skript von der Website herunterzuladen, das zip zu extrahieren und dann die IP-Adresse im Browser einzugeben.
 
@@ -139,6 +138,68 @@ Wenn man damit zufrieden ist, drückt man die Taste "Finish Setup" (2.), dabei m
 
 ![Webloginpage Nextcloud](media/nextcloud_login.png "Nextcloud Login")
 
+
+### Backup über Telegram
+Nextcloud ist nur ein Synchronisierungservice und kein Backup. Um einen Datenverlust zu vermeiden sollte man die Daten auf einen externen Dienst oder eine externe Festplatte backuppen. 
+
+Der Instant-Messaging Dienst Telegram bietet unlimitiert Speicherplatz für seine Benutzer an. Das Benutzen des Dienstes ist kostenlos. Telegram gilt als einer der sichersten Instant-Messaging Dienste. Trotzdem sollte man die Dateien, die man auf Telegram hochlädt verschlüsseln, da Telegram V-Server von Amazon und von Google benutzt.
+
+Um das Backup über Telegram zu realisieren muss man noch einiges wissen. 
+- Die maximale Dateigrösse für Telegram ist 1.4GB
+- Der Uploadspeed auf Telegram ist nicht sehr hoch (~5MB/s)
+- Mehrere Uploads gleichzeitig können zu Fehlern führen. 
+- Die Dateien sollten immer verschlüsselt hochgeladen werden.
+- Es gibt ein CLI-Interface für Telegram unter Linux (telegram-cli)
+
+Aus diesem Grund sollte man aus den Dateien zuerst eine ZIP-Datei erstellen, welche dann hochgeladen werden. Bei ZIP kann man eine maximale Dateigrösse angeben, welche nicht überschritten werden soll. Die Dateien werden durch GPG verschlüsselt, welches auf vielen Linux-Distributionen bereits installiert ist. Schlussendlich werden sie hochgeladen über das CLI-Tool telegram-cli. 
+
+Telegram-cli kann sehr einfach installiert werden. Zuerst muss man snap installieren, über welches man danach telegram-cli installieren kann.
+```
+sudo apt install snapd
+```
+Nun kann man telegram-cli ganz einfach installieren.
+```
+sudo snap install telegram-cli
+```
+telegram-cli ist nun installiert. Initial muss man sich jedoch noch mit der Handynummer und einem an diese Handynummer geschickten Code anmelden. Ins Commandlineinterface von telegram-cli kommt man ganz einfach indem man folgendes eingibt:
+```
+telegram-cli
+```
+Nun kann man über das CLI (fast) alle Funktionen von Telegram benutzen. 
+
+Für das automatische Backup über Telegram haben wir ein einfaches Bash-Script geschrieben:
+```
+BACKUP_FOLDER=/var/www/html/nextcloud/data/USER/files/
+TEMP_FOLDER=/tmp/backup/
+ZIP_NAME=USER.zip
+PASSWORD=PASSWORT
+
+mkdir $TEMP_FOLDER
+rm -r $TEMP_FOLDER/*
+zip -r -s 1400m $TEMP_FOLDER$ZIP_NAME $BACKUP_FOLDER
+for FILE in $TEMP_FOLDER*
+    do
+        echo $PASSWORD | gpg -c --batch --yes --passphrase-fd 0 $FILE 
+        rm $FILE
+        /snap/bin/telegram-cli -W server.pub -e "send_file Backup $FILE.gpg"
+        rm $FILE.gpg
+    done
+rm -r $TEMP_FOLDER
+```
+Im obenstehenden Script müssen die 4 Variablen noch angepasst werden.
+
+Um das Script nun in regelmässigen Abständen ausführen zu können wird ein Cronjob erstellt. Als root kann man unter Linux standardmässig einfach Cronjobs mit ``crontab -e`` erstellen.
+
+Der Cronjob sieht auf unserem Raspberry Pi wie folgt aus:
+```
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').
+0 7 * * * /root/backup_telegram/backup_template.sh
+```
+Unter Umständen muss der Pfad noch angepast werden und die Zeit sollte wie gewünscht festgelegt werden. In unserem Beispiel wird das Script jeden Tag um genau 7 Uhr morgens ausgeführt.
+
+![Telegram Backup](media/Telegram_Backup.png "Telegram Backup")
 ## Testing von Nextcloud
 
 | Testfall                                                        | Soll                                                                               | Ist                                                                                           |
@@ -153,6 +214,7 @@ Wenn man damit zufrieden ist, drückt man die Taste "Finish Setup" (2.), dabei m
 | User erstellen | Der User wird erstellt und man kann die maximale Datenmenge angeben, die dieser User zur verfügung hat. | Man kann den User erstellen und angeben, wieviel Speicherplatz dieser User zur verfügung haben soll.
 | Installieren von zusätzlichen apps | Zusätzliche Apps können installiert werden und diese Funktionieren auch | Das Installieren von zusätzlichen Apps funktioniert und die installierten Apps funktionieren auch.
 | Themes | Themeing app ist installiert und themes können erstellt sowie angepasst und applied werden. | Über die Themeingapp können können themes erstellt werden. Diese themes können dann auc beabeitet und applied werden. 
+| Telegram Backup | Das Backup über Telegram funktioniert via Cron | Das Backup funktioniert aber hat ziemlich lange, da unser Raspberry Pi sehr langsam ist. s
 
 
 Im Screenshot sind Testdateien zu sehen die wir in die Cloud geladen haben.
